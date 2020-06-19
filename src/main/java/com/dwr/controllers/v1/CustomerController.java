@@ -3,8 +3,10 @@ package com.dwr.controllers.v1;
 import com.dwr.api.v1.model.CustomerDTO;
 import com.dwr.api.v1.model.CustomerListDTO;
 import com.dwr.services.CustomerService;
+import io.swagger.annotations.Api;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
 
 @RequestMapping(CustomerController.BASE_URL)
 @RestController
