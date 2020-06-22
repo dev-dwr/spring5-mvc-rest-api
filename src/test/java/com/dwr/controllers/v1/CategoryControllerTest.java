@@ -56,12 +56,14 @@ public class CategoryControllerTest {
         when(categoryService.getAllCategories()).thenReturn(categories);
         //then
         mockMvc.perform(get(CategoryController.BASE_URL)
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.categories", hasSize(2)));
     }
+
     @Test
-    public void getCategoryByNameTest() throws Exception{
+    public void getCategoryByNameTest() throws Exception {
         //given
         CategoryDTO category = new CategoryDTO();
         category.setName("TestName");
@@ -72,18 +74,20 @@ public class CategoryControllerTest {
 
         //then
         mockMvc.perform(get(CategoryController.BASE_URL + "TestName")
-            .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
                 //dollar sign means root content
-            .andExpect(jsonPath("$.name", equalTo("TestName")));
+                .andExpect(jsonPath("$.name", equalTo("TestName")));
     }
+
     @Test
-    public void getByNameNotFound() throws Exception{
+    public void getByNameNotFound() throws Exception {
         when(categoryService.getCategoryByName(anyString())).thenThrow(ResourceNotFoundException.class);
 
         mockMvc.perform(get(CategoryController.BASE_URL + "/Foo")
-                        .contentType(MediaType.APPLICATION_JSON))
-                        .andExpect(status().isNotFound());
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
 }
 
