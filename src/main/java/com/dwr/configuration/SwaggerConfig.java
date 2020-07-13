@@ -23,11 +23,4 @@ public class SwaggerConfig {
                 .build()
                 .pathMapping("/");
     }
-//    private ApiInfo metaData(){
-////        return new ApiInfo("First api",
-////                "my first api",
-////                "1.0",
-////                "Terms of service",
-////
-//    }
 }
