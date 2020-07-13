@@ -14,4 +14,5 @@ http://localhost:8080/swagger-ui.html
 # Built With
 * Spring 5 MVC
 * Java 8
+* JUnit 4
 * Swagger
